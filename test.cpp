@@ -141,7 +141,6 @@ TEST_F(PortfolioTestFixture, ApplyFromLedgerSuccessfully)
     EXPECT_EQ(LOLAcc, nullptr);
 }
 
-
 TEST_F(PortfolioTestFixture,TransferSuccessfully)
 {
     //Add secound account
@@ -181,9 +180,7 @@ TEST_F(PortfolioTestFixture,TransferFail)
 
 TEST_F(PortfolioTestFixture,TotaleExposure)
 {
-    
     long long result;
     result = pf.total_exposure();
-    EXPECT_NE(result, 2000); // 1000 (TRUE)
-    
+    EXPECT_NE(result, 2000); // 1000 (TRUE)  
 }
