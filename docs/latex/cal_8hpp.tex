@@ -1,0 +1,221 @@
+\doxysection{cal.\+hpp File Reference}
+\hypertarget{cal_8hpp}{}\label{cal_8hpp}\index{cal.hpp@{cal.hpp}}
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{cal_8hpp_aaa0bf9621dac0b04a949aa0d074e784c}{apply\+\_\+deposit}} (int balance, unsigned int amount)
+\begin{DoxyCompactList}\small\item\em Apply Deposits to the account. \end{DoxyCompactList}\item 
+signed int \mbox{\hyperlink{cal_8hpp_a0033cfa4a6e13b9f26f07bf9bb00850f}{apply\+\_\+withdrawal}} (int balance, unsigned int amount)
+\begin{DoxyCompactList}\small\item\em Apply withdrawal to the account. \end{DoxyCompactList}\item 
+signed int \mbox{\hyperlink{cal_8hpp_a7bd9b23d53f0ebe3922842953856a06d}{apply\+\_\+fee}} (int balance, int fee)
+\begin{DoxyCompactList}\small\item\em Apply fee to the account. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cal_8hpp_abea30aff453eca4425d01543f1aef545}{simple\+\_\+interest}} (int base, float apr, int days, int day\+\_\+count\+\_\+basis, char rounding\+\_\+policy)
+\begin{DoxyCompactList}\small\item\em Calculates simple interest for a given principal over a specified period. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cal_8hpp_a932d7c9f8582793eb679880220b5d1cc}{compound\+\_\+amount}} (int base, float apr, int days, int day\+\_\+count\+\_\+basis, char rounding\+\_\+policy)
+\begin{DoxyCompactList}\small\item\em Calculates compound amount over a specified period. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cal_8hpp_a8486b907a9e010f9281250ad3321d3f4}{fx\+\_\+convert}} (int amount, string from\+\_\+currency, string to\+\_\+currency, char rounding)
+\begin{DoxyCompactList}\small\item\em Converts an amount from one currency to another. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cal_8hpp_a5ce287f7f8e5aa00c8560d0dd93e9f56}{percent\+\_\+of}} (int amount, double rate, char rounding\+\_\+policy)
+\begin{DoxyCompactList}\small\item\em Calculates a percentage of a given amount. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{cal_8hpp_a09df0f467958e8aabb4a69a76905819a}{validate\+\_\+rate}} (float rate)
+\begin{DoxyCompactList}\small\item\em Validates that a given interest or percentage rate is acceptable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{cal_8hpp_a9770317bcce00b60f301d138a61448ee}{validate\+\_\+non\+\_\+negative}} (signed int amount)
+\begin{DoxyCompactList}\small\item\em Validates that a given amount is positive. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cal_8hpp_aaa0bf9621dac0b04a949aa0d074e784c}\index{cal.hpp@{cal.hpp}!apply\_deposit@{apply\_deposit}}
+\index{apply\_deposit@{apply\_deposit}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{apply\_deposit()}{apply\_deposit()}}
+{\footnotesize\ttfamily \label{cal_8hpp_aaa0bf9621dac0b04a949aa0d074e784c} 
+int apply\+\_\+deposit (\begin{DoxyParamCaption}\item[{int}]{balance}{, }\item[{unsigned int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Apply Deposits to the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em balance} & The current account balance in cents \\
+\hline
+{\em amount} & The amount to deposit in cents \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new balance after applying the deposit 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a7bd9b23d53f0ebe3922842953856a06d}\index{cal.hpp@{cal.hpp}!apply\_fee@{apply\_fee}}
+\index{apply\_fee@{apply\_fee}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{apply\_fee()}{apply\_fee()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a7bd9b23d53f0ebe3922842953856a06d} 
+signed int apply\+\_\+fee (\begin{DoxyParamCaption}\item[{int}]{balance}{, }\item[{int}]{fee}{}\end{DoxyParamCaption})}
+
+
+
+Apply fee to the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em balance} & The current account balance in cents \\
+\hline
+{\em fee} & The fee amount in cents \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new balance after applying the fee 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a0033cfa4a6e13b9f26f07bf9bb00850f}\index{cal.hpp@{cal.hpp}!apply\_withdrawal@{apply\_withdrawal}}
+\index{apply\_withdrawal@{apply\_withdrawal}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{apply\_withdrawal()}{apply\_withdrawal()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a0033cfa4a6e13b9f26f07bf9bb00850f} 
+signed int apply\+\_\+withdrawal (\begin{DoxyParamCaption}\item[{int}]{balance}{, }\item[{unsigned int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Apply withdrawal to the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em balance} & The current account balance in cents \\
+\hline
+{\em amount} & The amount to withdrawal in cents \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new balance after applying the withdrawal (may be negative) 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a932d7c9f8582793eb679880220b5d1cc}\index{cal.hpp@{cal.hpp}!compound\_amount@{compound\_amount}}
+\index{compound\_amount@{compound\_amount}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{compound\_amount()}{compound\_amount()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a932d7c9f8582793eb679880220b5d1cc} 
+int compound\+\_\+amount (\begin{DoxyParamCaption}\item[{int}]{base}{, }\item[{float}]{apr}{, }\item[{int}]{days}{, }\item[{int}]{day\+\_\+count\+\_\+basis}{, }\item[{char}]{rounding\+\_\+policy}{}\end{DoxyParamCaption})}
+
+
+
+Calculates compound amount over a specified period. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base} & The amount in cents \\
+\hline
+{\em apr} & Annual Percentage Rate \\
+\hline
+{\em days} & Number of days for compounding. \\
+\hline
+{\em day\+\_\+count\+\_\+basis} & Number of days considered in a year (365 or 360). \\
+\hline
+{\em rounding\+\_\+policy} & Rounding policy to the result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total amount after applying compound interest 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a8486b907a9e010f9281250ad3321d3f4}\index{cal.hpp@{cal.hpp}!fx\_convert@{fx\_convert}}
+\index{fx\_convert@{fx\_convert}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{fx\_convert()}{fx\_convert()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a8486b907a9e010f9281250ad3321d3f4} 
+int fx\+\_\+convert (\begin{DoxyParamCaption}\item[{int}]{amount}{, }\item[{string}]{from\+\_\+currency}{, }\item[{string}]{to\+\_\+currency}{, }\item[{char}]{rounding}{}\end{DoxyParamCaption})}
+
+
+
+Converts an amount from one currency to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount to convert \\
+\hline
+{\em from\+\_\+currency} & The source currency code \\
+\hline
+{\em to\+\_\+currency} & The target currency code \\
+\hline
+{\em rounding} & Rounding policy to apply during conversion. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The converted amount in the target currency 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a5ce287f7f8e5aa00c8560d0dd93e9f56}\index{cal.hpp@{cal.hpp}!percent\_of@{percent\_of}}
+\index{percent\_of@{percent\_of}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{percent\_of()}{percent\_of()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a5ce287f7f8e5aa00c8560d0dd93e9f56} 
+int percent\+\_\+of (\begin{DoxyParamCaption}\item[{int}]{amount}{, }\item[{double}]{rate}{, }\item[{char}]{rounding\+\_\+policy}{}\end{DoxyParamCaption})}
+
+
+
+Calculates a percentage of a given amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The base amount to calculate from \\
+\hline
+{\em rate} & The percentage rate \\
+\hline
+{\em rounding\+\_\+policy} & Rounding policy to the result. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated percentage amount 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_abea30aff453eca4425d01543f1aef545}\index{cal.hpp@{cal.hpp}!simple\_interest@{simple\_interest}}
+\index{simple\_interest@{simple\_interest}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{simple\_interest()}{simple\_interest()}}
+{\footnotesize\ttfamily \label{cal_8hpp_abea30aff453eca4425d01543f1aef545} 
+int simple\+\_\+interest (\begin{DoxyParamCaption}\item[{int}]{base}{, }\item[{float}]{apr}{, }\item[{int}]{days}{, }\item[{int}]{day\+\_\+count\+\_\+basis}{, }\item[{char}]{rounding\+\_\+policy}{}\end{DoxyParamCaption})}
+
+
+
+Calculates simple interest for a given principal over a specified period. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em base} & The amount in cents \\
+\hline
+{\em apr} & Annual Percentage Rate \\
+\hline
+{\em days} & Number of days for interest \\
+\hline
+{\em day\+\_\+count\+\_\+basis} & The number of year days used for interest (365 or 360). \\
+\hline
+{\em rounding\+\_\+policy} & Rounding policy to the result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The calculated simple interest amount 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a9770317bcce00b60f301d138a61448ee}\index{cal.hpp@{cal.hpp}!validate\_non\_negative@{validate\_non\_negative}}
+\index{validate\_non\_negative@{validate\_non\_negative}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{validate\_non\_negative()}{validate\_non\_negative()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a9770317bcce00b60f301d138a61448ee} 
+bool validate\+\_\+non\+\_\+negative (\begin{DoxyParamCaption}\item[{signed int}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Validates that a given amount is positive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount} & The amount to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the amount is zero or positive CAL\+\_\+\+HPP\+\_\+ 
+\end{DoxyReturn}
+\Hypertarget{cal_8hpp_a09df0f467958e8aabb4a69a76905819a}\index{cal.hpp@{cal.hpp}!validate\_rate@{validate\_rate}}
+\index{validate\_rate@{validate\_rate}!cal.hpp@{cal.hpp}}
+\doxysubsubsection{\texorpdfstring{validate\_rate()}{validate\_rate()}}
+{\footnotesize\ttfamily \label{cal_8hpp_a09df0f467958e8aabb4a69a76905819a} 
+bool validate\+\_\+rate (\begin{DoxyParamCaption}\item[{float}]{rate}{}\end{DoxyParamCaption})}
+
+
+
+Validates that a given interest or percentage rate is acceptable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rate} & The rate to validate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the rate is valid 
+\end{DoxyReturn}

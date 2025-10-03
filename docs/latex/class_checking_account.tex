@@ -1,0 +1,140 @@
+\doxysection{Checking\+Account Class Reference}
+\hypertarget{class_checking_account}{}\label{class_checking_account}\index{CheckingAccount@{CheckingAccount}}
+
+
+Represents a checking account that supports monthly fees and specific settings.  
+
+
+
+
+{\ttfamily \#include $<$portfolio.\+hpp$>$}
+
+Inheritance diagram for Checking\+Account\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_checking_account}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_checking_account_a9ce70d5fe6a3ee859e3d81b57b5a91c4}{Checking\+Account}} (const string \&\mbox{\hyperlink{class_base_account_a4bb6d8496d683ac8ea4bfc87812ceff5}{id}}, const \mbox{\hyperlink{struct_account_settings}{Account\+Settings}} \&settings, int64\+\_\+t opening\+\_\+balance=0)
+\begin{DoxyCompactList}\small\item\em Constructor for a new checking account object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{Account\+Type}} \mbox{\hyperlink{class_checking_account_a0e466d1e7985a5ccbaed869ffe940647}{type}} () const override
+\begin{DoxyCompactList}\small\item\em Get the type of the account. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_checking_account_ae001351d132895005f74e82e1d02e382}{apply\+\_\+monthly\+\_\+fee}} (int64\+\_\+t ts)
+\begin{DoxyCompactList}\small\item\em Apply the monthly fee to the account. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_base_account}{Base\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_account_a7403fc75e5692664503908aba0b847f3}{Base\+Account}} (const string \&\mbox{\hyperlink{class_base_account_a4bb6d8496d683ac8ea4bfc87812ceff5}{id}}, const \mbox{\hyperlink{struct_account_settings}{Account\+Settings}} \&settings, long long opening\+\_\+balance=0)
+\begin{DoxyCompactList}\small\item\em Constructor of the \doxylink{class_base_account}{Base\+Account}. \end{DoxyCompactList}\item 
+const string \& \mbox{\hyperlink{class_base_account_a4bb6d8496d683ac8ea4bfc87812ceff5}{id}} () const override
+\item 
+long long \mbox{\hyperlink{class_base_account_a733043934c28f9916dff40ece693e1ea}{balance\+\_\+cents}} () const override
+\item 
+const vector$<$ \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} $>$ \& \mbox{\hyperlink{class_base_account_a7ad205d0c61368f9d15b2071e9eb40d0}{audit}} () const override
+\item 
+void \mbox{\hyperlink{class_base_account_a7acd274473a2943d1686da32596c7fc7}{deposit}} (int64\+\_\+t amount\+\_\+cents, int64\+\_\+t ts, string note=nullptr) override
+\begin{DoxyCompactList}\small\item\em Deposits into the account. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_account_a60b4938be426ef8769b3e9e4bd17d219}{withdrawal}} (int64\+\_\+t amount\+\_\+cents, int64\+\_\+t ts, string note=nullptr) override
+\begin{DoxyCompactList}\small\item\em Withdrawal from the account. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_account_a9bd156ec31a2792dc0b864fbd548fad6}{charge\+\_\+fee}} (int64\+\_\+t fee\+\_\+cents, int64\+\_\+t ts, string note=nullptr) override
+\begin{DoxyCompactList}\small\item\em Apply fee to the account. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_account_acc8d26ccd99bf315fe38907946941048}{post\+\_\+simple\+\_\+interest}} (int days, int basis, int64\+\_\+t ts, string note) override
+\begin{DoxyCompactList}\small\item\em Post simple interest to account balance. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_base_account_a6ab21fb64c4360927c1bdccb67c7a408}{apply}} (const \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} \&tx) override
+\begin{DoxyCompactList}\small\item\em apply a transaction to the account \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_i_account}{IAccount}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{class_i_account_aa9a245da1463d6bbc93549a41524e1fa}{\texorpdfstring{$\sim$}{\string~}\+IAccount}} ()=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_base_account}{Base\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_base_account_a1ab7746fbb4ccc65698bcb3fdefd40a2}{record}} (const \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} \&tx)
+\begin{DoxyCompactList}\small\item\em Records a new transaction in the audit trail. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_base_account}{Base\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_base_account_a38b3ef8bc990034e6cb51d7e2b973510}{id\+\_\+}}
+\item 
+\mbox{\hyperlink{struct_account_settings}{Account\+Settings}} \mbox{\hyperlink{class_base_account_a24f2f635e442e308eed775886742c2bb}{settings\+\_\+}}
+\item 
+int64\+\_\+t \mbox{\hyperlink{class_base_account_ad27ac9f409f73bee42efd719c006a0f4}{balance\+\_\+cents\+\_\+}}
+\item 
+vector$<$ \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} $>$ \mbox{\hyperlink{class_base_account_a5e79d45836760fdfa80ff865d0545421}{audit\+\_\+}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_base_account}{Base\+Account}}}
+\begin{DoxyCompactItemize}
+\item 
+static const int64\+\_\+t \mbox{\hyperlink{class_base_account_ac78603e333e5befbd4fe526b50199ab8}{k\+Max\+Audit}} = 256
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a checking account that supports monthly fees and specific settings. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_checking_account_a9ce70d5fe6a3ee859e3d81b57b5a91c4}\index{CheckingAccount@{CheckingAccount}!CheckingAccount@{CheckingAccount}}
+\index{CheckingAccount@{CheckingAccount}!CheckingAccount@{CheckingAccount}}
+\doxysubsubsection{\texorpdfstring{CheckingAccount()}{CheckingAccount()}}
+{\footnotesize\ttfamily \label{class_checking_account_a9ce70d5fe6a3ee859e3d81b57b5a91c4} 
+Checking\+Account\+::\+Checking\+Account (\begin{DoxyParamCaption}\item[{const string \&}]{id}{, }\item[{const \mbox{\hyperlink{struct_account_settings}{Account\+Settings}} \&}]{settings}{, }\item[{int64\+\_\+t}]{opening\+\_\+balance}{ = {\ttfamily 0}}\end{DoxyParamCaption})}
+
+
+
+Constructor for a new checking account object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Unique identifier for the account \\
+\hline
+{\em settings} & Account configuration settings \\
+\hline
+{\em opening\+\_\+balance} & Initial balance in cents (defaults to 0) \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_checking_account_ae001351d132895005f74e82e1d02e382}\index{CheckingAccount@{CheckingAccount}!apply\_monthly\_fee@{apply\_monthly\_fee}}
+\index{apply\_monthly\_fee@{apply\_monthly\_fee}!CheckingAccount@{CheckingAccount}}
+\doxysubsubsection{\texorpdfstring{apply\_monthly\_fee()}{apply\_monthly\_fee()}}
+{\footnotesize\ttfamily \label{class_checking_account_ae001351d132895005f74e82e1d02e382} 
+void Checking\+Account\+::apply\+\_\+monthly\+\_\+fee (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{ts}{}\end{DoxyParamCaption})}
+
+
+
+Apply the monthly fee to the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ts} & Timestamp of the transaction \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_checking_account_a0e466d1e7985a5ccbaed869ffe940647}\index{CheckingAccount@{CheckingAccount}!type@{type}}
+\index{type@{type}!CheckingAccount@{CheckingAccount}}
+\doxysubsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily \label{class_checking_account_a0e466d1e7985a5ccbaed869ffe940647} 
+\mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{Account\+Type}} Checking\+Account\+::type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get the type of the account. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{Account\+Type} The typeof the account 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{class_i_account_a94e087182b25a0518b0fd21691e947b6}{IAccount}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{portfolio_8hpp}{portfolio.\+hpp}}\item 
+\mbox{\hyperlink{portfolio_8cpp}{portfolio.\+cpp}}\end{DoxyCompactItemize}

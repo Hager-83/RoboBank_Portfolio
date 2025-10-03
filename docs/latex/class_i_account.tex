@@ -1,0 +1,229 @@
+\doxysection{IAccount Class Reference}
+\hypertarget{class_i_account}{}\label{class_i_account}\index{IAccount@{IAccount}}
+
+
+Interface for all account types.  
+
+
+
+
+{\ttfamily \#include $<$portfolio.\+hpp$>$}
+
+Inheritance diagram for IAccount\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_i_account}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const string \& \mbox{\hyperlink{class_i_account_aa086b196ab6a45da9d9005cf05e4fbff}{id}} () const =0
+\item 
+virtual \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{Account\+Type}} \mbox{\hyperlink{class_i_account_a94e087182b25a0518b0fd21691e947b6}{type}} () const =0
+\item 
+virtual long long \mbox{\hyperlink{class_i_account_ad0b7ebac5804f0f86b6c34738bc216be}{balance\+\_\+cents}} () const =0
+\item 
+virtual void \mbox{\hyperlink{class_i_account_a99d7135cfbed0d1d3d139fa1287ba109}{deposit}} (int64\+\_\+t amount\+\_\+cents, int64\+\_\+t ts, string note=nullptr)=0
+\begin{DoxyCompactList}\small\item\em Deposits into the account. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_account_ab4cc5b4abba2deb7d83402a59b6043b6}{withdrawal}} (int64\+\_\+t amount\+\_\+cents, int64\+\_\+t ts, string note=nullptr)=0
+\begin{DoxyCompactList}\small\item\em Withdrawal from the account. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_account_ac94d0b271fd6a07fe2bf48b48999baea}{charge\+\_\+fee}} (int64\+\_\+t fee\+\_\+cents, int64\+\_\+t ts, string note=nullptr)=0
+\begin{DoxyCompactList}\small\item\em Apply fee to the account. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_account_a84e4be94de1430b51817373ca84253a6}{post\+\_\+simple\+\_\+interest}} (int days, int basis, int64\+\_\+t ts, string note)=0
+\begin{DoxyCompactList}\small\item\em Post simple interest to account balance. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_i_account_a0c122e1d2117d7fad2ac2c145bdbb0f4}{apply}} (const \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} \&tx)=0
+\begin{DoxyCompactList}\small\item\em apply a transaction to the account \end{DoxyCompactList}\item 
+virtual const vector$<$ \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} $>$ \& \mbox{\hyperlink{class_i_account_ad1c3f1ea3bea8016dd5f1e6e86b6f3da}{audit}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns the transaction audit history. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{class_i_account_aa9a245da1463d6bbc93549a41524e1fa}{\texorpdfstring{$\sim$}{\string~}\+IAccount}} ()=default
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for all account types. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_i_account_aa9a245da1463d6bbc93549a41524e1fa}\index{IAccount@{IAccount}!````~IAccount@{\texorpdfstring{$\sim$}{\string~}IAccount}}
+\index{````~IAccount@{\texorpdfstring{$\sim$}{\string~}IAccount}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}IAccount()}{\string~IAccount()}}
+{\footnotesize\ttfamily \label{class_i_account_aa9a245da1463d6bbc93549a41524e1fa} 
+virtual IAccount\+::\texorpdfstring{$\sim$}{\string~}\+IAccount (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_i_account_a0c122e1d2117d7fad2ac2c145bdbb0f4}\index{IAccount@{IAccount}!apply@{apply}}
+\index{apply@{apply}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{apply()}{apply()}}
+{\footnotesize\ttfamily \label{class_i_account_a0c122e1d2117d7fad2ac2c145bdbb0f4} 
+virtual void IAccount\+::apply (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} \&}]{tx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+apply a transaction to the account 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tx} & Transaction record to apply \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a6ab21fb64c4360927c1bdccb67c7a408}{Base\+Account}}.
+
+\Hypertarget{class_i_account_ad1c3f1ea3bea8016dd5f1e6e86b6f3da}\index{IAccount@{IAccount}!audit@{audit}}
+\index{audit@{audit}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{audit()}{audit()}}
+{\footnotesize\ttfamily \label{class_i_account_ad1c3f1ea3bea8016dd5f1e6e86b6f3da} 
+virtual const vector$<$ \mbox{\hyperlink{struct_tx_record}{Tx\+Record}} $>$ \& IAccount\+::audit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns the transaction audit history. 
+
+\begin{DoxyReturn}{Returns}
+Refrance to a vector of transaction audit history 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a7ad205d0c61368f9d15b2071e9eb40d0}{Base\+Account}}.
+
+\Hypertarget{class_i_account_ad0b7ebac5804f0f86b6c34738bc216be}\index{IAccount@{IAccount}!balance\_cents@{balance\_cents}}
+\index{balance\_cents@{balance\_cents}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{balance\_cents()}{balance\_cents()}}
+{\footnotesize\ttfamily \label{class_i_account_ad0b7ebac5804f0f86b6c34738bc216be} 
+virtual long long IAccount\+::balance\+\_\+cents (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\begin{DoxyReturn}{Returns}
+The account balance in cents 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a733043934c28f9916dff40ece693e1ea}{Base\+Account}}.
+
+\Hypertarget{class_i_account_ac94d0b271fd6a07fe2bf48b48999baea}\index{IAccount@{IAccount}!charge\_fee@{charge\_fee}}
+\index{charge\_fee@{charge\_fee}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{charge\_fee()}{charge\_fee()}}
+{\footnotesize\ttfamily \label{class_i_account_ac94d0b271fd6a07fe2bf48b48999baea} 
+virtual void IAccount\+::charge\+\_\+fee (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{fee\+\_\+cents}{, }\item[{int64\+\_\+t}]{ts}{, }\item[{string}]{note}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Apply fee to the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em fee\+\_\+cents} & The fee amount in cents \\
+\hline
+{\em ts} & Timestamp of the transaction \\
+\hline
+{\em note} & Transaction note (optional) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a9bd156ec31a2792dc0b864fbd548fad6}{Base\+Account}}.
+
+\Hypertarget{class_i_account_a99d7135cfbed0d1d3d139fa1287ba109}\index{IAccount@{IAccount}!deposit@{deposit}}
+\index{deposit@{deposit}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{deposit()}{deposit()}}
+{\footnotesize\ttfamily \label{class_i_account_a99d7135cfbed0d1d3d139fa1287ba109} 
+virtual void IAccount\+::deposit (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{amount\+\_\+cents}{, }\item[{int64\+\_\+t}]{ts}{, }\item[{string}]{note}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Deposits into the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount\+\_\+cents} & Amount to deposit in cents \\
+\hline
+{\em ts} & Timestamp of the transaction \\
+\hline
+{\em note} & Transaction note (optional) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a7acd274473a2943d1686da32596c7fc7}{Base\+Account}}.
+
+\Hypertarget{class_i_account_aa086b196ab6a45da9d9005cf05e4fbff}\index{IAccount@{IAccount}!id@{id}}
+\index{id@{id}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{id()}{id()}}
+{\footnotesize\ttfamily \label{class_i_account_aa086b196ab6a45da9d9005cf05e4fbff} 
+virtual const string \& IAccount\+::id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\begin{DoxyReturn}{Returns}
+The unique account identifier 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a4bb6d8496d683ac8ea4bfc87812ceff5}{Base\+Account}}.
+
+\Hypertarget{class_i_account_a84e4be94de1430b51817373ca84253a6}\index{IAccount@{IAccount}!post\_simple\_interest@{post\_simple\_interest}}
+\index{post\_simple\_interest@{post\_simple\_interest}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{post\_simple\_interest()}{post\_simple\_interest()}}
+{\footnotesize\ttfamily \label{class_i_account_a84e4be94de1430b51817373ca84253a6} 
+virtual void IAccount\+::post\+\_\+simple\+\_\+interest (\begin{DoxyParamCaption}\item[{int}]{days}{, }\item[{int}]{basis}{, }\item[{int64\+\_\+t}]{ts}{, }\item[{string}]{note}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Post simple interest to account balance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em days} & Number of days for interest \\
+\hline
+{\em basis} & Interest basis \\
+\hline
+{\em basis} & Timestamp of the transaction \\
+\hline
+{\em note} & Transaction note (optional) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_acc8d26ccd99bf315fe38907946941048}{Base\+Account}}.
+
+\Hypertarget{class_i_account_a94e087182b25a0518b0fd21691e947b6}\index{IAccount@{IAccount}!type@{type}}
+\index{type@{type}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{type()}{type()}}
+{\footnotesize\ttfamily \label{class_i_account_a94e087182b25a0518b0fd21691e947b6} 
+virtual \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{Account\+Type}} IAccount\+::type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+\begin{DoxyReturn}{Returns}
+The account type 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{class_checking_account_a0e466d1e7985a5ccbaed869ffe940647}{Checking\+Account}}, and \mbox{\hyperlink{class_savings_account_a6b74e5af4466dde27823a499e0cee44b}{Savings\+Account}}.
+
+\Hypertarget{class_i_account_ab4cc5b4abba2deb7d83402a59b6043b6}\index{IAccount@{IAccount}!withdrawal@{withdrawal}}
+\index{withdrawal@{withdrawal}!IAccount@{IAccount}}
+\doxysubsubsection{\texorpdfstring{withdrawal()}{withdrawal()}}
+{\footnotesize\ttfamily \label{class_i_account_ab4cc5b4abba2deb7d83402a59b6043b6} 
+virtual void IAccount\+::withdrawal (\begin{DoxyParamCaption}\item[{int64\+\_\+t}]{amount\+\_\+cents}{, }\item[{int64\+\_\+t}]{ts}{, }\item[{string}]{note}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Withdrawal from the account. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em amount\+\_\+cents} & Amount to withdrawal in cents \\
+\hline
+{\em ts} & Timestamp of the transaction \\
+\hline
+{\em note} & Transaction note (optional) \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_base_account_a60b4938be426ef8769b3e9e4bd17d219}{Base\+Account}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{portfolio_8hpp}{portfolio.\+hpp}}\end{DoxyCompactItemize}

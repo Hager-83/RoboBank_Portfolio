@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.10)
+project(RoboBankPortfolioProject)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# ✅ خلي GoogleTest يستخدم نفس runtime زي بقية المشروع
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
+# أضف Google Test كمجلد فرعي
+add_subdirectory(googletest)
+
+# =========================
+# 📌 أولاً: الـ Executable الأساسي للمشروع
+# =========================
+add_executable(RoboBank
+    main.cpp
+    cal.cpp
+    portfolio.cpp
+)
+
+# =========================
+# 📌 ثانياً: إعداد Google Test
+# =========================
+enable_testing()
+
+# أضف ملف الاختبار + ملفات المشروع اللي هنختبرها
+add_executable(runTests
+    test.cpp
+    cal.cpp
+    portfolio.cpp
+)
+
+# اربط الاختبارات مع gtest و gtest_main
+target_link_libraries(runTests PRIVATE gtest gtest_main)
+
+# سجل الاختبار مع CTest
+add_test(NAME AllTests COMMAND runTests)

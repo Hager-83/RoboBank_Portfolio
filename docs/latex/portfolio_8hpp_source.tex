@@ -1,0 +1,150 @@
+\doxysection{portfolio.\+hpp}
+\hypertarget{portfolio_8hpp_source}{}\label{portfolio_8hpp_source}\mbox{\hyperlink{portfolio_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ PORTFOLIO\_HPP\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ PORTFOLIO\_HPP\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{AccountType}}\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2fa195917574edc9b6bbeb5be9785b6a479}{Checking}}\ ,\ \ }
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2faab0da0e987457927aebb5111d5d32c12}{Savings}}\ ,\ \ \ }
+\DoxyCodeLine{00020\ \};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80}{TxKind}}\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80a92f80bd57592af65188ca27786514cca}{Deposit}}\ ,\ \ \ \ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80aab85d9edc966536822a98a25f7d8640a}{Withdrawal}}\ ,\ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80aeb7297e94e2cb86e90a6ead067666717}{Fee}}\ ,\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80a920beb5dda21b04a332e0457cb0cfbec}{Interest}}\ ,\ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80a76061228352313ef581de5871e817fbe}{TransferIn}}\ ,\ \ }
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80ade4c0df59373ace9583b7aa8f081af46}{TransferOut}}\ ,\ }
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_account_settings}{AccountSettings}}\ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{AccountType}}\ \mbox{\hyperlink{struct_account_settings_a1f933dd4f79011a4dbfb72a75aa78c0a}{type}};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{struct_account_settings_ae9f203c27a93f359b37da62b9a230791}{apr}};}
+\DoxyCodeLine{00042\ \ \ \ \ int64\_t\ \mbox{\hyperlink{struct_account_settings_a01e125a0644643cede5d698ba31fe007}{fee\_flat\_cents}};}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_tx_record}{TxRecord}}\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a4f3872f2a4b93507fb40cac6cd0c4a80}{TxKind}}\ \mbox{\hyperlink{struct_tx_record_a7d5007a726053a11293b306302333e22}{kind}};}
+\DoxyCodeLine{00051\ \ \ \ \ int64\_t\ \mbox{\hyperlink{struct_tx_record_a49902a60dd68818188850ec07c2de98c}{amount\_cents}};}
+\DoxyCodeLine{00052\ \ \ \ \ int64\_t\ \mbox{\hyperlink{struct_tx_record_a62f54b3708c81568a0a72064c1ec1600}{timestamp}};}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_tx_record_a84a2acab74f27f800ae749f1140da71e}{note}};}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_tx_record_ad4f30cc8cdf81a152d3e2c8d89e5c5a4}{account\_id}};\ \ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_transfer_record}{TransferRecord}}\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_transfer_record_add1ef122617ccdc361a4ebfacc9c70e2}{from\_id}};}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_transfer_record_a3939800daf43cc0f8058f42e85510a46}{to\_id}};}
+\DoxyCodeLine{00064\ \ \ \ \ int64\_t\ \mbox{\hyperlink{struct_transfer_record_a78a3fc1eb34edfff696b2166fbee817e}{amount\_cents}};}
+\DoxyCodeLine{00065\ \ \ \ \ int64\_t\ \mbox{\hyperlink{struct_transfer_record_a8c312e48d3f8d1f0ca7222ffb0915453}{timestamp}};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{struct_transfer_record_ad97fd1a4dd537d28d12595be0b921128}{note}};}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_i_account}{IAccount}}\ \{}
+\DoxyCodeLine{00074\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{class_i_account_aa086b196ab6a45da9d9005cf05e4fbff}{id}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{AccountType}}\ \mbox{\hyperlink{class_i_account_a94e087182b25a0518b0fd21691e947b6}{type}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_i_account_ad0b7ebac5804f0f86b6c34738bc216be}{balance\_cents}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_account_a99d7135cfbed0d1d3d139fa1287ba109}{deposit}}(int64\_t\ amount\_cents,\ int64\_t\ ts,\ \textcolor{keywordtype}{string}\ note\ =\ \textcolor{keyword}{nullptr})\ =\ 0;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_account_ab4cc5b4abba2deb7d83402a59b6043b6}{withdrawal}}(int64\_t\ amount\_cents,\ int64\_t\ ts,\ \textcolor{keywordtype}{string}\ note\ =\ \textcolor{keyword}{nullptr})\ =\ 0;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_account_ac94d0b271fd6a07fe2bf48b48999baea}{charge\_fee}}(int64\_t\ fee\_cents,\ int64\_t\ ts,\ \ \textcolor{keywordtype}{string}\ note\ =\ \textcolor{keyword}{nullptr})\ =\ 0;}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_account_a84e4be94de1430b51817373ca84253a6}{post\_simple\_interest}}(\textcolor{keywordtype}{int}\ days,\ \textcolor{keywordtype}{int}\ basis,\ int64\_t\ ts,\ \textcolor{keywordtype}{string}\ note)\ =\ 0;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_i_account_a0c122e1d2117d7fad2ac2c145bdbb0f4}{apply}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tx_record}{TxRecord}}\&\ tx)\ =\ 0;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ vector<TxRecord>\&\ \mbox{\hyperlink{class_i_account_ad1c3f1ea3bea8016dd5f1e6e86b6f3da}{audit}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_i_account_aa9a245da1463d6bbc93549a41524e1fa}{\string~IAccount}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{class\ \ }\mbox{\hyperlink{class_base_account_a7403fc75e5692664503908aba0b847f3}{BaseAccount}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_i_account}{IAccount}}\ \{}
+\DoxyCodeLine{00145\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_base_account_a38b3ef8bc990034e6cb51d7e2b973510}{id\_}};}
+\DoxyCodeLine{00147\ \ \ \ \ \mbox{\hyperlink{struct_account_settings}{AccountSettings}}\ \mbox{\hyperlink{class_base_account_a24f2f635e442e308eed775886742c2bb}{settings\_}};}
+\DoxyCodeLine{00148\ \ \ \ \ int64\_t\ \mbox{\hyperlink{class_base_account_ad27ac9f409f73bee42efd719c006a0f4}{balance\_cents\_}};}
+\DoxyCodeLine{00149\ \ \ \ \ vector<TxRecord>\ \mbox{\hyperlink{class_base_account_a5e79d45836760fdfa80ff865d0545421}{audit\_}};}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ int64\_t\ \mbox{\hyperlink{class_base_account_ac78603e333e5befbd4fe526b50199ab8}{kMaxAudit}}\ =\ 256;\ }
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_account_a1ab7746fbb4ccc65698bcb3fdefd40a2}{record}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tx_record}{TxRecord}}\&\ tx);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{class_base_account_a7403fc75e5692664503908aba0b847f3}{BaseAccount}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_account_settings}{AccountSettings}}\&\ settings,}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ opening\_balance\ =\ 0);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \mbox{\hyperlink{class_base_account_a4bb6d8496d683ac8ea4bfc87812ceff5}{id}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{class_base_account_a733043934c28f9916dff40ece693e1ea}{balance\_cents}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00178\ \ \ \ \ \textcolor{keyword}{const}\ vector<TxRecord>\&\ \mbox{\hyperlink{class_base_account_a7ad205d0c61368f9d15b2071e9eb40d0}{audit}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_account_a7acd274473a2943d1686da32596c7fc7}{deposit}}(int64\_t\ amount\_cents,\ int64\_t\ ts,\ \textcolor{keywordtype}{string}\ note\ =\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00196\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_account_a60b4938be426ef8769b3e9e4bd17d219}{withdrawal}}(int64\_t\ amount\_cents,\ int64\_t\ ts,\ \textcolor{keywordtype}{string}\ note\ =\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00197\ }
+\DoxyCodeLine{00205\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_account_a9bd156ec31a2792dc0b864fbd548fad6}{charge\_fee}}(int64\_t\ fee\_cents,\ int64\_t\ ts,}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ note\ =\ \textcolor{keyword}{nullptr})\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00216\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_account_acc8d26ccd99bf315fe38907946941048}{post\_simple\_interest}}(\textcolor{keywordtype}{int}\ days,\ \textcolor{keywordtype}{int}\ basis,}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int64\_t\ ts,\ \textcolor{keywordtype}{string}\ note)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00224\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_account_a6ab21fb64c4360927c1bdccb67c7a408}{apply}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_tx_record}{TxRecord}}\&\ tx)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00225\ \};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00231\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_checking_account_a9ce70d5fe6a3ee859e3d81b57b5a91c4}{CheckingAccount}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_account_a7403fc75e5692664503908aba0b847f3}{BaseAccount}}\ \{}
+\DoxyCodeLine{00232\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00240\ \ \ \ \ \mbox{\hyperlink{class_checking_account_a9ce70d5fe6a3ee859e3d81b57b5a91c4}{CheckingAccount}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_account_settings}{AccountSettings}}\&\ settings,}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int64\_t\ opening\_balance\ =\ 0);}
+\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{AccountType}}\ \mbox{\hyperlink{class_checking_account_a0e466d1e7985a5ccbaed869ffe940647}{type}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00254\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_checking_account_ae001351d132895005f74e82e1d02e382}{apply\_monthly\_fee}}(int64\_t\ ts);}
+\DoxyCodeLine{00255\ \};}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00261\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_savings_account_a2f0db64c1af02549960e00bbccb669bb}{SavingsAccount}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_account_a7403fc75e5692664503908aba0b847f3}{BaseAccount}}\ \{}
+\DoxyCodeLine{00262\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{class_savings_account_a2f0db64c1af02549960e00bbccb669bb}{SavingsAccount}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_account_settings}{AccountSettings}}\&\ settings,}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ opening\_balance\ =\ 0);}
+\DoxyCodeLine{00272\ \ \ \ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{portfolio_8hpp_a406c8474bdbb9cc2a25882558a367c2f}{AccountType}}\ \mbox{\hyperlink{class_savings_account_a6b74e5af4466dde27823a499e0cee44b}{type}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00287\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_savings_account_a7dbad8f9a8d902fd9b9374abb5b5dc40}{post\_interest}}(\textcolor{keywordtype}{int}\ days,\ \textcolor{keywordtype}{int}\ basis,\ int64\_t\ ts);}
+\DoxyCodeLine{00288\ \};}
+\DoxyCodeLine{00289\ }
+\DoxyCodeLine{00295\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_portfolio}{Portfolio}}\ \{}
+\DoxyCodeLine{00297\ \ \ \ \ unordered\_map<string\ ,\ unique\_ptr<IAccount>>\ accounts\_;}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_portfolio_a8151c537db4cf5d1e3144e997dcccdfc}{add\_account}}\ (\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_account_settings}{AccountSettings}}\&\ settings,}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int64\_t\ opening\_balance\ =\ 0);}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00316\ \ \ \ \ \mbox{\hyperlink{class_i_account}{IAccount}}*\ \mbox{\hyperlink{class_portfolio_aa72040d0df1ded9be041587f8c3951cb}{get\_account}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\&\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00323\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_portfolio_a11d60e3ccb775b29e4a036aad47adc5b}{apply\_all}}(\textcolor{keyword}{const}\ vector<TxRecord>\&\ txs);}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00333\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_portfolio_a05ba0d103e5431cfe6de5ea0d6ecaec1}{apply\_from\_ledger}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}*\ tx\_account\_id,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}*\ tx\_type,}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ int64\_t*\ tx\_amount\_cents,\ \textcolor{keywordtype}{int}\ tx\_count);}
+\DoxyCodeLine{00335\ }
+\DoxyCodeLine{00342\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_portfolio_af612c4a9560ad099d28a688631457cab}{transfer}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{struct_transfer_record}{TransferRecord}}\&\ tr);}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00349\ \ \ \ \ int64\_t\ \mbox{\hyperlink{class_portfolio_a129320b63e77e203b8d9006454156042}{total\_exposure}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00350\ \};}
+\DoxyCodeLine{00351\ }
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ PORTFOLIO\_HPP\_}}
+
+\end{DoxyCode}
