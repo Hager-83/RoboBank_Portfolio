@@ -19,7 +19,7 @@ jobs:
         run: sudo apt update && sudo apt install -y g++ git
 
       - name: Compile C++ program
-        run: g++ -o program main.cpp
+        run: g++ -std=c++17 -o program main.cpp portfolio.cpp cal.cpp
 
       - name: Run C++ program
         run: ./program
