@@ -41,7 +41,7 @@ int main() {
     constexpr int size = 2;
     string id[size] = {"CHK-001", "SAV-010"};
     int types[size] = {0, 3}; // 0 -->Deposit, 3 -->Interest
-    long long amounts[size] = {5000, 1000};
+    int64_t amounts[size] = {5000, 1000};
 
     pf.apply_from_ledger(id, types, amounts, size);
 
