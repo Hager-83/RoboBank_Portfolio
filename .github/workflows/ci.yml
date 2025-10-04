@@ -2,11 +2,9 @@ name: CI build & test
 
 on:
   push:
-    branches:
-      - unit_test
+
   pull_request:
     types: [opened, review_requested]
-    branches: [unit_test]
 
 jobs:   
   build_and_test:
