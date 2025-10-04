@@ -80,7 +80,7 @@ class IAccount {
     virtual AccountType type() const = 0;
         
     /// @return The account balance in cents
-    virtual long long balance_cents() const = 0;
+    virtual int64_t balance_cents() const = 0;
 
     /**
      *  @brief Deposits into the account
@@ -166,13 +166,13 @@ class  BaseAccount : public IAccount {
      * @param opening_balance Initial balance in cents (defaults to 0)
      */
     BaseAccount(const string& id, const AccountSettings& settings,
-                long long opening_balance = 0);
+                int64_t opening_balance = 0);
 
     /// @return  The unique account identifier
     const string& id() const override;
 
     /// @return  The account balance in cents
-    long long balance_cents() const override;
+    int64_t balance_cents() const override;
 
     /// @return Refrane to transaction audit trail
     const vector<TxRecord>& audit() const override;
@@ -268,7 +268,7 @@ class SavingsAccount : public BaseAccount {
   * @param opening_balance  Initial balance in cents (defaults to 0)
   */
     SavingsAccount(const string& id, const AccountSettings& settings,
-                   long long opening_balance = 0);
+                   int64_t opening_balance = 0);
     
      /**
      * @brief Get the type of the account
