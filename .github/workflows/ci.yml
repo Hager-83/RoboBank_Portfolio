@@ -32,7 +32,7 @@ jobs:
 
       - name: Compile Unit Tests
         run: |
-           g++ -std=c++17 -I/usr/include -pthread portfolio.cpp portfolio.cpp cal.cpp \
+           g++ -std=c++17 -I/usr/include -pthread portfolio_test.cpp portfolio.cpp cal.cpp \
            googletest/googletest/src/gtest_main.cc /usr/lib/libgtest.a -o tests
 
       - name: Run Unit Tests
