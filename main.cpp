@@ -38,7 +38,7 @@ int main() {
     cout << "SAV-010 after transfer: " << pf.get_account("SAV-010")->balance_cents() << endl;
 
     /**********   Apply transactions (Ledger path) **********/ 
-    int size = 2;
+    constexpr int size = 2;
     string id[size] = {"CHK-001", "SAV-010"};
     int types[size] = {0, 3}; // 0 -->Deposit, 3 -->Interest
     long long amounts[size] = {5000, 1000};
