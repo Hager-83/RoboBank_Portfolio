@@ -1,0 +1,22 @@
+name: CI using Docker
+
+on:
+  push:
+    
+  pull_request:
+    types: [opened, review_requested]
+
+jobs:
+  test:
+    name: Build & Test inside Docker
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t robobank-portfolio .
+
+      - name: Run tests inside container
+        run: docker run --rm robobank-portfolio

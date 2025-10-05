@@ -122,7 +122,7 @@ TEST_F(PortfolioTestFixture, ApplyFromLedgerSuccessfully)
         static_cast<int>(TxKind::Withdrawal),
         static_cast<int>(TxKind::Deposit)
     };
-    long long amounts[3] = {500, 1000, 250};
+    int64_t amounts[3] = {500, 1000, 250};
 
     pf.apply_from_ledger(ids, types, amounts, 3);
 
@@ -180,7 +180,7 @@ TEST_F(PortfolioTestFixture,TransferFail)
 
 TEST_F(PortfolioTestFixture,TotaleExposure)
 {
-    long long result;
+    int64_t result;
     result = pf.total_exposure();
     EXPECT_NE(result, 2000); // 1000 (TRUE)  
 }

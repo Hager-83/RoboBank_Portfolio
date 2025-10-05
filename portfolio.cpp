@@ -132,7 +132,7 @@ void Portfolio::apply_all(const std::vector<TxRecord> &txs) {
 
 void Portfolio::apply_from_ledger(const string *tx_account_id,
                                   const int *tx_type,
-                                  const long long *tx_amount_cents,
+                                  const int64_t *tx_amount_cents,
                                   int tx_count) {
   vector<TxRecord> vect;
   for (auto i = 0; i < tx_count; i++) {
